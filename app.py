@@ -1129,22 +1129,24 @@ elif nav_choice == "6. DSP Mathematics & Theory":
     ---
 
     ### 5. Resolution Limits (Physical — cannot be improved by zero-padding)
-    $$\\Delta R = \\frac{{c}}{{2B}} = {cfg.range_resolution:.3f}\\text{{ m}}
-    \\qquad
-    \\Delta v = \\frac{{\\lambda}}{{2 N_c T_{{PRI}}}} = {cfg.velocity_resolution:.3f}\\text{{ m/s}}$$
+    
+    $$\Delta R = \frac{c}{2B} = {cfg.range_resolution:.3f}\text{ m}$$
+    
+    $$\Delta v = \frac{\lambda}{2 N_c T_{{PRI}}} = {cfg.velocity_resolution:.3f}\text{ m/s}$$
 
     ---
 
     ### 6. 2D CA-CFAR Detection Threshold
-    $$T_{{CUT}} = \\alpha \\cdot P_{{noise}}, \\qquad
-    \\alpha = N_{{train}}\\!\\left(P_{{fa}}^{{-1/N_{{train}}}} - 1\\right)$$
+    
+    $$T_{{CUT}} = \alpha \cdot P_{{noise}}$$
+    
+    $$\alpha = N_{{train}}\!\left(P_{{fa}}^{{-1/N_{{train}}}} - 1\right)$$
 
     ---
 
     ### 7. Engineering Limitations
-    1. **SISO only** — no azimuth/elevation angle estimation without MIMO.
-    2. **Stop-and-Go** — target displacement within $T_c = {cfg.chirp_duration*1e6:.0f}\\,\\mu\\text{{s}}$
-       is < 1 mm at automotive speeds; Doppler is captured in slow-time phase.
-    3. **Point targets** — real vehicles have distributed, angle-dependent RCS (Swerling 1/3).
-    4. **No clutter/multipath** — road surface, guard-rails not modelled.
+    1. **SISO only** — Single-Input Single-Output: no azimuth or elevation angle-of-arrival (AoA) estimation without a MIMO antenna array.
+    2. **Stop-and-Go approximation** — Target displacement within active chirp $T_c = {cfg.chirp_duration*1e6:.0f}\,\mu\text{s}$ is $< 1\text{ mm}$ at automotive speeds; Doppler velocity is accurately captured in slow-time chirp-to-chirp phase shift.
+    3. **Point target model** — Real vehicles exhibit distributed, angle-dependent Radar Cross Section (RCS) fluctuations (e.g., Swerling 1/3 models).
+    4. **No clutter / multipath** — Ground clutter, road surface reflections, guard-rails, and atmospheric attenuation are not modelled in this simulation.
     """)
